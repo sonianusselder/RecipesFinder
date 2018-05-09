@@ -48,22 +48,22 @@ export default {
       [
         {
           id: 1,
-          name: "Homer Simpson",
+          name: "Banana",
           thumbnail: "http://lorempixel.com/40/40/people/1"
         },
         {
           id: 2,
-          name: "Amancio Ortega",
+          name: "Apple",
           thumbnail: "http://lorempixel.com/40/40/people/2"
         },
         {
           id: 3,
-          name: "Peter Parker",
+          name: "Sugar",
           thumbnail: "http://lorempixel.com/40/40/people/3"
         },
         {
           id: 4,
-          name: "John Cena",
+          name: "Rice",
           thumbnail: "http://lorempixel.com/40/40/4"
         }
       ]
