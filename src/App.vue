@@ -5,6 +5,10 @@
     </header>
     <main>
       <img src="./assets/logo.png" alt="Vue.js PWA">
+      <ul>
+        <li><router-link to="/">Hello</router-link></li>
+        <li><router-link to="/world">World</router-link></li>
+      </ul>
       <router-view></router-view>
     </main>
   </div>
