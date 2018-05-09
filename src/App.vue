@@ -10,13 +10,26 @@
         <li><router-link to="/world">World</router-link></li>
       </ul>
       <router-view></router-view>
+      <!-- <div v-for="data in items">{{data}}</div> -->
+      <ul>
+        <li v-for="(item, index) in items">
+          {{ parentMessage }} - {{ index }} - {{ item.name }}
+        </li>
+      </ul>
     </main>
   </div>
 </template>
 
 <script>
+import json from './assets/data/recipes.json'
 export default {
-  name: 'app'
+  name: 'app',
+  data() {
+    return {
+      parentMessage: 'Parent',
+      items: json
+    }
+  },
 }
 </script>
 
