@@ -4,13 +4,24 @@
       <span>Vue.js PWA</span>
     </header>
     <main>
-      <img src="./assets/logo.png" alt="Vue.js PWA">
       <ul>
         <li><router-link to="/">Hello</router-link></li>
         <li><router-link to="/world">World</router-link></li>
       </ul>
+
       <router-view></router-view>
+
+      <dropdown :options="options" @select-item="onOptionSelect">
+        <template slot="item" slot-scope="option">
+          <span>
+            <img :src="option.thumbnail">
+          </span>
+        </template>
+      </dropdown>
       <!-- <div v-for="data in items">{{data}}</div> -->
+
+
+      
       <ul>
         <li v-for="(item, index) in items">
           {{ parentMessage }} - {{ index }} - {{ item.name }}
@@ -22,8 +33,13 @@
 
 <script>
 import json from './assets/data/recipes.json'
+import Dropdown from '@/components/Dropdown'
+
 export default {
   name: 'app',
+  components: {
+    Dropdown,
+  },
   data() {
     return {
       parentMessage: 'Parent',
