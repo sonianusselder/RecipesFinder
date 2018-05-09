@@ -21,7 +21,7 @@
       <!-- <div v-for="data in items">{{data}}</div> -->
 
 
-      
+
       <ul>
         <li v-for="(item, index) in items">
           {{ parentMessage }} - {{ index }} - {{ item.name }}
@@ -43,7 +43,35 @@ export default {
   data() {
     return {
       parentMessage: 'Parent',
-      items: json
+      items: json,
+      options: 
+      [
+        {
+          id: 1,
+          name: "Homer Simpson",
+          thumbnail: "http://lorempixel.com/40/40/people/1"
+        },
+        {
+          id: 2,
+          name: "Amancio Ortega",
+          thumbnail: "http://lorempixel.com/40/40/people/2"
+        },
+        {
+          id: 3,
+          name: "Peter Parker",
+          thumbnail: "http://lorempixel.com/40/40/people/3"
+        },
+        {
+          id: 4,
+          name: "John Cena",
+          thumbnail: "http://lorempixel.com/40/40/4"
+        }
+      ]
+    }
+  },
+  methods: {
+    onOptionSelect(option) {
+      console.log(option);
     }
   },
 }
