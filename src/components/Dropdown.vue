@@ -28,6 +28,12 @@
                 </li>
             </ul>
         </transition>
+        <ul>
+          <li v-for="(option, i) in filteredItems">
+                  {{ option.name }}
+              <slot name="item" :title="option.name" :thumbnail="option.thumbnail"></slot>
+          </li>
+        </ul>
     </div>
 </template>
 

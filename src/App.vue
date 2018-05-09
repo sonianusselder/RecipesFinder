@@ -18,15 +18,11 @@
           </span>
         </template>
       </dropdown>
-      <!-- <div v-for="data in items">{{data}}</div> -->
-
-
-
-      <ul>
+      <!-- <ul>
         <li v-for="(item, index) in items">
           {{ parentMessage }} - {{ index }} - {{ item.name }}
         </li>
-      </ul>
+      </ul> -->
     </main>
   </div>
 </template>
