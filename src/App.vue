@@ -18,11 +18,11 @@
           </span>
         </template>
       </dropdown>
-      <!-- <ul>
-        <li v-for="(item, index) in items">
-          {{ parentMessage }} - {{ index }} - {{ item.name }}
+      <ul>
+        <li v-for="(item, index) in options">
+          {{ parentMessage }} - {{ index }} - {{ item.name }} - <span v-for="spice in item.ingredients">{{ spice }}</span>
         </li>
-      </ul> -->
+      </ul>
     </main>
   </div>
 </template>
@@ -44,23 +44,27 @@ export default {
       [
         {
           id: 1,
-          name: "Banana",
-          thumbnail: "http://lorempixel.com/40/40/people/1"
+          name: "Banana split",
+          thumbnail: "http://lorempixel.com/40/40/people/1",
+          ingredients: ["apple","banana","icecream"],
         },
         {
           id: 2,
-          name: "Apple",
-          thumbnail: "http://lorempixel.com/40/40/people/2"
+          name: "Apple pie",
+          thumbnail: "http://lorempixel.com/40/40/people/2",
+          ingredients: ["apple","chocolate","flour"],
         },
         {
           id: 3,
-          name: "Sugar",
-          thumbnail: "http://lorempixel.com/40/40/people/3"
+          name: "Sugar cake",
+          thumbnail: "http://lorempixel.com/40/40/people/3",
+          ingredients: ["apple","sugar","milk"],
         },
         {
           id: 4,
-          name: "Rice",
-          thumbnail: "http://lorempixel.com/40/40/4"
+          name: "Rice waffles",
+          thumbnail: "http://lorempixel.com/40/40/4",
+          ingredients: ["apple","jelly"],
         }
       ]
     }

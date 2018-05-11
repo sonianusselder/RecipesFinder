@@ -23,8 +23,8 @@
                     @mouseenter="selected = i"
                     @mousedown="select"
                     :class="{'selected': i === selected}">
-                        {{ option.name }}
-                    <slot name="item" :title="option.name" :thumbnail="option.thumbnail"></slot>
+                        {{ option.ingredients }}
+                    <slot name="item" :title="option.ingredients" :thumbnail="option.thumbnail"></slot>
                 </li>
             </ul>
         </transition>
@@ -56,6 +56,9 @@ export default {
     onInput(value) {
       this.isOpened = !!value; //(value != '');
       this.selected = null;
+      this.options.forEach(function(elem) {
+        console.log(elem);
+      });
     },
     select() {
       const selectedOption = this.filteredItems[this.selected];
