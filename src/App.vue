@@ -10,7 +10,12 @@
       </ul>
 
       <router-view></router-view>
-
+      <div
+      class="fb-like"
+      data-share="true"
+      data-width="450"
+      data-show-faces="true">
+    </div>
       <dropdown :options="options" @select-item="onOptionSelect">
         <template slot="item" slot-scope="option">
           <span>
@@ -23,18 +28,47 @@
           {{ parentMessage }} - {{ index }} - {{ item.name }} - <span v-for="spice in item.ingredients">{{ spice }}</span>
         </li>
       </ul>
+
+     <button id="btn" class="" v-on:click="getData">Get Data</button>
+
+      <div v-if="loading">
+        KAAS
+      </div>
+
+      <div v-for="info in infos" :key="info.id">
+        <div class="cards">
+            <img src="https://placeimg.com/300/300/nature" class="img-responsive" alt="Random images placeholder"> 
+          <div>
+            <h3>{{ info.id }}</h3>
+            <p>{{ info.joke }}</p>
+            <p>{{ info.category }}</p>
+          </div>
+        </div>
+      </div>
+
+      <next-case
+			:case-name="HALLO"
+			:image="nextCase.case_image"
+			:case-color="nextCase.case_background_color"
+			:slug="nextCase.post.post_name"
+		/>
+
     </main>
   </div>
+  
 </template>
 
 <script>
 import json from './assets/data/recipes.json'
 import Dropdown from '@/components/Dropdown'
+import NextCase from '@/components/NextCase'
+import axios from 'axios';
 
 export default {
   name: 'app',
   components: {
     Dropdown,
+    NextCase
   },
   data() {
     return {
@@ -45,33 +79,45 @@ export default {
         {
           id: 1,
           name: "Banana split",
-          thumbnail: "http://lorempixel.com/40/40/people/1",
+          thumbnail: "",
           ingredients: ["apple","banana","icecream"],
         },
         {
           id: 2,
           name: "Apple pie",
-          thumbnail: "http://lorempixel.com/40/40/people/2",
+          thumbnail: "",
           ingredients: ["apple","chocolate","flour"],
         },
         {
           id: 3,
           name: "Sugar cake",
-          thumbnail: "http://lorempixel.com/40/40/people/3",
+          thumbnail: "",
           ingredients: ["apple","sugar","milk"],
         },
         {
           id: 4,
           name: "Rice waffles",
-          thumbnail: "http://lorempixel.com/40/40/4",
+          thumbnail: "",
           ingredients: ["apple","jelly"],
         }
-      ]
+      ],
+      infos: [],
+      loading: false,    
     }
   },
   methods: {
     onOptionSelect(option) {
       console.log(option);
+    },
+    getData: function () {
+      this.loading = true;
+      axios.get("https://graph.facebook.com/voorbeeld?fields=id,name&accessToken=HIERTOKEN")
+      .then((response)  =>  {
+        this.loading = false;
+        this.infos = response.data.value;
+      }, (error)  =>  {
+        this.loading = false;
+      })
     }
   },
 }

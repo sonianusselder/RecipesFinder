@@ -27,12 +27,45 @@
     <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>"><% }}} %>
   </head>
   <body>
+
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '223525148232718',
+        xfbml      : true,
+        version    : 'v3.0'
+      });
+      
+      FB.AppEvents.logPageView();  
+      
+      // const pageAccessToken = "EAADLS4EPDA4BAJS6rXH0ZBvsJWN12DGjWnURcqSnwr1DtAXa2ZATWwFHN6GzbViKDEZAoitIwMFL3xhyL2dWYLqj3woU3k0Pkc9k5ktG9ZCkQduS48soQex2x5TBF5R89kBBLQ4yE1tLTEZA7iZCG6i9wpObOzMZBTwtnLt9tHmMt7UWL6XPm1atUX0WfssdJIZD";
+      FB.api('/113124472034820', function(response) {
+        console.log(response);
+      });
+    };
+
+    (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+
     <noscript>
       This is your fallback content in case JavaScript fails to load.
     </noscript>
+
     <div id="app"></div>
     <!-- Todo: only include in production -->
     <%= htmlWebpackPlugin.options.serviceWorkerLoader %>
     <!-- built files will be auto injected -->
+
+  <fb:login-button 
+    scope="public_profile,email"
+    onlogin="checkLoginState();">
+  </fb:login-button>
+
   </body>
 </html>
