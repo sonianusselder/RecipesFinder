@@ -1,54 +1,95 @@
 <template>
   <div id="app">
-    <header>
-      <span>Vue.js PWA</span>
-    </header>
+    <header-el></header-el>
     <main>
-      <img src="./assets/logo.png" alt="Vue.js PWA">
+      <!-- <div id="sock">
+        <img src="@/assets/img/muis.png" width="80" />
+      </div>-->
       <router-view></router-view>
     </main>
+    <footer>
+      <p>
+        Developed by
+        <a href="http://sonian.nl" target="_blank">Sonia Nusselder</a>
+      </p>
+    </footer>
   </div>
 </template>
 
 <script>
+import HeaderEl from "@/components/HeaderEl";
+
 export default {
-  name: 'app'
-}
+  name: "app",
+  components: {
+    HeaderEl
+  }
+};
 </script>
 
-<style>
+<style lang="scss">
+@import "assets/SCSS/mixins.scss";
+
+@font-face {
+  font-family: "swagfont";
+  src: url("assets/font/HelveticaNeue-CondensedBold.eot");
+  src: url("assets/font/HelveticaNeue-CondensedBold.eot?#iefix")
+      format("embedded-opentype"),
+    url("assets/font/HelveticaNeue-CondensedBold.woff2") format("woff2"),
+    url("assets/font/HelveticaNeue-CondensedBold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.left {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+.right {
+  -moz-transform: scaleX(1);
+  -o-transform: scaleX(1);
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+
+#sock {
+  z-index: 100;
+  transition: transform 0.1s;
+}
+
 body {
   margin: 0;
-}
+  background-color: #8400ff; /* For browsers that do not support gradients */
+  color: white;
+  background-image: linear-gradient(to bottom right, #ff3000, #8400ff);
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-family: "swagfont", Gadget, sans-serif !important;
 
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
+  #app {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-transform: uppercase;
+    color: white;
 
-main {
-  text-align: center;
-  margin-top: 40px;
-}
+    main {
+      margin: 0 auto;
+    }
 
-header {
-  margin: 0;
-  height: 56px;
-  padding: 0 16px 0 24px;
-  background-color: #35495E;
-  color: #ffffff;
-}
+    footer {
+      padding: 4rem 0;
+      text-align: center;
 
-header span {
-  display: block;
-  position: relative;
-  font-size: 20px;
-  line-height: 1;
-  letter-spacing: .02em;
-  font-weight: 400;
-  box-sizing: border-box;
-  padding-top: 16px;
+      a,
+      p {
+        font-size: 1rem !important;
+      }
+    }
+  }
 }
 </style>
